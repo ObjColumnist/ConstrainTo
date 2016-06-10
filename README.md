@@ -84,6 +84,7 @@ If you want to constrain the frame of `redView` to be inset 10 pts to all edges 
 
 ```swift
 redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+```
 
 ### Constrain to another view's margins
 
