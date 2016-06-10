@@ -1,6 +1,7 @@
 # ConstrainTo
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods Compatible](https://cocoapod-badges.herokuapp.com/v/ConstrainTo/badge.png)](https://cocoapods.org)
 
 **ConstrainTo** is a simple and tiny extension to `UIView`, that aims to simplify the common usecases of _AutoLayout_ without trying to introduce new paradigms.
 
@@ -18,7 +19,7 @@ public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRela
 public func constrain(attribute: NSLayoutAttribute, to constant: CGFloat) -> NSLayoutConstraint
 ```
 
-In addition to 3 convinience methods:
+In addition to 4 convinience methods:
 
 ```swift
 public func constrain(to size: CGSize) -> (width: NSLayoutConstraint, height: NSLayoutConstraint)
