@@ -71,12 +71,29 @@ public extension UIView {
      @return (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint): Tuple of the top, left, bottom and right layout constraints that were created
      */
     public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint)  {
-        let top = constrain(.TopMargin, to: .TopMargin, of: view, offsetBy: insets.top)
-        let left = constrain(.LeadingMargin, to: .LeadingMargin, of: view, offsetBy: insets.left)
-        let bottom = constrain(.BottomMargin, to: .BottomMargin, of: view, offsetBy: -insets.bottom)
-        let right = constrain(.TrailingMargin, to: .TrailingMargin, of: view, offsetBy: -insets.right)
+        let top = constrain(.Top, to: .Top, of: view, offsetBy: insets.top)
+        let left = constrain(.Left, to: .Left, of: view, offsetBy: insets.left)
+        let bottom = constrain(.Bottom, to: .Bottom, of: view, offsetBy: -insets.bottom)
+        let right = constrain(.Right, to: .Right, of: view, offsetBy: -insets.right)
         
-        return (top, left, right, bottom)
+        return (top, left, bottom, right)
+    }
+    
+    /**
+     Constrains frame to another view's margins
+     
+     @param view: The UIView that you want to constrain to (typically the superview)
+     @param insets: UIEdgeInsets defaulting to 0
+     
+     @return (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint): Tuple of the top, left, bottom and right layout constraints that were created
+     */
+    public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)  {
+        let topMargin = constrain(.TopMargin, to: .TopMargin, of: view, offsetBy: insets.top)
+        let leadingMargin = constrain(.LeadingMargin, to: .LeadingMargin, of: view, offsetBy: insets.left)
+        let bottomMargin = constrain(.BottomMargin, to: .BottomMargin, of: view, offsetBy: -insets.bottom)
+        let trailingMargin = constrain(.TrailingMargin, to: .TrailingMargin, of: view, offsetBy: -insets.right)
+        
+        return (topMargin, leadingMargin, bottomMargin, trailingMargin)
     }
     
     /**

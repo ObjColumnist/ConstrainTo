@@ -25,6 +25,8 @@ public func constrain(to size: CGSize) -> (width: NSLayoutConstraint, height: NS
 
 public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint)
 
+public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)  {
+
 public func constrain(toCenterOf view: UIView) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint)
 ```
 
@@ -82,6 +84,24 @@ If you want to constrain the frame of `redView` to be inset 10 pts to all edges 
 
 ```swift
 redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+
+### Constrain to another view's margins
+
+If you want to constrain the margin's of `redView` to that of `blueView` you would need to write:
+
+```swift
+redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+```
+But because of default parameters you just need to write:
+
+```swift
+redView.constrain(toMarginsOf: blueView)
+```
+
+If you want to constrain the margin's of `redView` to be inset 10 pts to all edges of `blueView` you would need to write:
+
+```swift
+redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
 ```
 ### Constrain to the center of another view
 
