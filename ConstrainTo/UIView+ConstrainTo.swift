@@ -66,11 +66,11 @@ public extension UIView {
      Constrains frame to another view's frame
      
      @param view: The UIView that you want to constrain to (typically the superview)
-     @param insets: UIEdgeInsets defaulting to 0
+     @param insets: UIEdgeInsets defaulting to UIEdgeInsetsZero
      
      @return (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint): Tuple of the top, left, bottom and right layout constraints that were created
      */
-    public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint)  {
+    public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint) {
         let top = constrain(.Top, to: .Top, of: view, offsetBy: insets.top)
         let left = constrain(.Left, to: .Left, of: view, offsetBy: insets.left)
         let bottom = constrain(.Bottom, to: .Bottom, of: view, offsetBy: -insets.bottom)
@@ -83,11 +83,11 @@ public extension UIView {
      Constrains frame to another view's margins
      
      @param view: The UIView that you want to constrain to (typically the superview)
-     @param insets: UIEdgeInsets defaulting to 0
+     @param insets: UIEdgeInsets defaulting to UIEdgeInsetsZero
      
      @return (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint): Tuple of the top, left, bottom and right layout constraints that were created
      */
-    public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)  {
+    public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint) {
         let topMargin = constrain(.TopMargin, to: .TopMargin, of: view, offsetBy: insets.top)
         let leadingMargin = constrain(.LeadingMargin, to: .LeadingMargin, of: view, offsetBy: insets.left)
         let bottomMargin = constrain(.BottomMargin, to: .BottomMargin, of: view, offsetBy: -insets.bottom)
@@ -100,12 +100,13 @@ public extension UIView {
      Constrains to the center of a view
      
      @param view: The UIView that you want to constrain to (typically the superview)
+     @param offsets: CGPoint defaulting to CGPoint.zero
      
-     @return (width: horizontal, height: vertical): Tuple of the horizontal and vertical layout constraints that were created
+     @return (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint): Tuple of the horizontal and vertical layout constraints that were created
      */
-    public func constrain(toCenterOf view: UIView) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint) {
-        let horizontal = constrain(.CenterX, to: .CenterX, of: view)
-        let vertical = constrain(.CenterY, to: .CenterY, of: view)
+    public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint) {
+        let horizontal = constrain(.CenterX, to: .CenterX, of: view, offsetBy: offsets.x)
+        let vertical = constrain(.CenterY, to: .CenterY, of: view, offsetBy: offsets.y)
         
         return (horizontal, vertical)
     }

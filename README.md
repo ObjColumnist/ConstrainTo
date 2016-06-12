@@ -24,11 +24,12 @@ In addition to 4 convinience methods:
 ```swift
 public func constrain(to size: CGSize) -> (width: NSLayoutConstraint, height: NSLayoutConstraint)
 
-public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint)
+public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint)
 
-public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)  {
+public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)
 
-public func constrain(toCenterOf view: UIView) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint)
+public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint)
+
 ```
 
 ## Examples
@@ -65,7 +66,7 @@ redView.constrain(.Width, to: 20)
 If you want to constrain the size of `redView` to 20 x 20 pts you would need to write:
 
 ```swift
-redView.constrain(to: CGSize(x: 20, y: 20))
+redView.constrain(to: CGSize(width: 20, height: 20))
 ```
 
 ### Constrain to another view's frame
@@ -73,7 +74,7 @@ redView.constrain(to: CGSize(x: 20, y: 20))
 If you want to constrain the frame of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+redView.constrain(to: blueView, insetBy: UIEdgeInsetsZero)
 ```
 But because of default parameters you just need to write:
 
@@ -92,7 +93,7 @@ redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom:
 If you want to constrain the margin's of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsetsZero)
 ```
 But because of default parameters you just need to write:
 
@@ -110,6 +111,18 @@ redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets(top: 10, left: 10
 If you want to constrain `redView` to be centered in `blueView` you would need to write:
 
 ```swift
+redView.constrain(toCenterOf: blueView, offsetBy: CGPoint.zero)
+```
+
+But because of default parameters you just need to write:
+
+```swift
 redView.constrain(toCenterOf: blueView)
 ```
 
+
+If you want to constrain the center of `redView` to be 10 pts to below the center `blueView` you would need to write:
+
+```swift
+redView.constrain(toCenterOf: blueView, offsetBy: CGPoint(x: 0, y: 10))
+```
