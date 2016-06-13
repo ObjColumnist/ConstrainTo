@@ -28,7 +28,7 @@ public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInse
 
 public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)
 
-public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint)
+public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (x: NSLayoutConstraint, y: NSLayoutConstraint)
 
 ```
 

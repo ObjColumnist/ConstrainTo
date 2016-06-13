@@ -102,12 +102,12 @@ public extension UIView {
      @param view: The UIView that you want to constrain to (typically the superview)
      @param offsets: CGPoint defaulting to CGPoint.zero
      
-     @return (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint): Tuple of the horizontal and vertical layout constraints that were created
+     @return (x: NSLayoutConstraint, y: NSLayoutConstraint): Tuple of the x and y layout constraints that were created
      */
-    public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (horizontal: NSLayoutConstraint, vertical: NSLayoutConstraint) {
-        let horizontal = constrain(.CenterX, to: .CenterX, of: view, offsetBy: offsets.x)
-        let vertical = constrain(.CenterY, to: .CenterY, of: view, offsetBy: offsets.y)
+    public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (x: NSLayoutConstraint, y: NSLayoutConstraint) {
+        let x = constrain(.CenterX, to: .CenterX, of: view, offsetBy: offsets.x)
+        let y = constrain(.CenterY, to: .CenterY, of: view, offsetBy: offsets.y)
         
-        return (horizontal, vertical)
+        return (x, y)
     }
 }
