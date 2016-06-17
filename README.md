@@ -19,16 +19,18 @@ public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRela
 public func constrain(attribute: NSLayoutAttribute, to constant: CGFloat) -> NSLayoutConstraint
 ```
 
-In addition to 4 convinience methods:
+In addition to 5 convenience methods:
 
 ```swift
-public func constrain(to size: CGSize) -> (width: NSLayoutConstraint, height: NSLayoutConstraint)
+public func constrain(to size: CGSize) -> (width: NSLayoutConstraintConstraint, heightConstraint: NSLayoutConstraint)
 
-public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (top: NSLayoutConstraint, left: NSLayoutConstraint, bottom: NSLayoutConstraint, right: NSLayoutConstraint)
+public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint)
 
-public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topMargin: NSLayoutConstraint, leadingMargin: NSLayoutConstraint, bottomMargin: NSLayoutConstraint, trailingMargin: NSLayoutConstraint)
+public func constrain(toEdgesOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topConstraint: NSLayoutConstraint, leadingConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, trailingConstraint: NSLayoutConstraint)
 
-public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (x: NSLayoutConstraint, y: NSLayoutConstraint)
+public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topMarginConstraint: NSLayoutConstraint, leadingMarginConstraint: NSLayoutConstraint, bottomMarginConstraint: NSLayoutConstraint, trailingMarginConstraint: NSLayoutConstraint)
+
+public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint)
 
 ```
 
@@ -71,7 +73,7 @@ redView.constrain(to: CGSize(width: 20, height: 20))
 
 ### Constrain to another view's frame
 
-If you want to constrain the frame of `redView` to that of `blueView` you would need to write:
+If you want to constrain the frame (top, left, bottom and right) of `redView` to that of `blueView` you would need to write:
 
 ```swift
 redView.constrain(to: blueView, insetBy: UIEdgeInsetsZero)
@@ -87,10 +89,28 @@ If you want to constrain the frame of `redView` to be inset 10 pts to all edges 
 ```swift
 redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
 ```
+### Constrain to another view's edges
+
+If you want to constrain the edges (top, leading, bottom and trailing) of `redView` to that of `blueView` you would need to write:
+
+```swift
+redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsetsZero)
+```
+But because of default parameters you just need to write:
+
+```swift
+redView.constrain(toEdgesOf: blueView)
+```
+
+If you want to constrain the edges of `redView` to be inset 10 pts to all edges of `blueView` you would need to write:
+
+```swift
+redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+```
 
 ### Constrain to another view's margins
 
-If you want to constrain the margin's of `redView` to that of `blueView` you would need to write:
+If you want to constrain the margins (top margin, leading margin, bottom margin and trailing margin) of `redView` to that of `blueView` you would need to write:
 
 ```swift
 redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsetsZero)
@@ -119,7 +139,6 @@ But because of default parameters you just need to write:
 ```swift
 redView.constrain(toCenterOf: blueView)
 ```
-
 
 If you want to constrain the center of `redView` to be 10 pts to below the center `blueView` you would need to write:
 
