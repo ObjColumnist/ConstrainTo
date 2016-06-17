@@ -16,7 +16,7 @@
 ```swift
 public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0) -> NSLayoutConstraint
 
-public func constrain(attribute: NSLayoutAttribute, to constant: CGFloat) -> NSLayoutConstraint
+public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat) -> NSLayoutConstraint
 ```
 
 In addition to 5 convenience methods:
@@ -58,6 +58,12 @@ redView.constrain(.Left, to: .Right, of: blueView, offsetBy: 10)
 ### Constrain an attribute
 
 If you want to constrain the width of `redView` to 20 pts you would need to write:
+
+```swift
+redView.constrain(.Width, being: .Equal, to: 20)
+```
+
+But because of default parameters you just need to write:
 
 ```swift
 redView.constrain(.Width, to: 20)

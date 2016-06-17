@@ -39,14 +39,15 @@ public extension UIView {
      
      - parameters:
          - attribute: `NSLayoutAttribute` that you want to constrain
+         - relation: `NSLayoutRelation` of the contraint defaulting to .Equal
          - constant: The constant to constrain by
      
      - returns:
         NSLayoutConstraint: The layout constraint that was created
      */
-    public func constrain(attribute: NSLayoutAttribute, to constant: CGFloat) -> NSLayoutConstraint {
+    public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
-        let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 0.0, constant: constant)
+        let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .NotAnAttribute, multiplier: 0.0, constant: constant)
         constraint.active = true
         addConstraint(constraint)
         return constraint
