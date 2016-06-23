@@ -382,4 +382,30 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(yConstraint.multiplier, 1)
         XCTAssertEqual(yConstraint.constant, yOffset)
     }
+    
+    func testConstrainToSizeOfView() {
+        let rootView = UIView(frame: CGRect.zero)
+        let firstView = UIView(frame: CGRect.zero)
+        rootView.addSubview(firstView)
+        
+        let (widthConstraint, heightConstraint) = firstView.constrain(toSizeOf: rootView)
+        
+        XCTAssertTrue(widthConstraint.active)
+        XCTAssertEqual(widthConstraint.firstItem as? UIView, firstView)
+        XCTAssertEqual(widthConstraint.firstAttribute, NSLayoutAttribute.Width)
+        XCTAssertEqual(widthConstraint.relation, NSLayoutRelation.Equal)
+        XCTAssertEqual(widthConstraint.secondItem as? UIView, rootView)
+        XCTAssertEqual(widthConstraint.secondAttribute, NSLayoutAttribute.Width)
+        XCTAssertEqual(widthConstraint.multiplier, 1)
+        XCTAssertEqual(widthConstraint.constant, 0)
+        
+        XCTAssertTrue(heightConstraint.active)
+        XCTAssertEqual(heightConstraint.firstItem as? UIView, firstView)
+        XCTAssertEqual(heightConstraint.firstAttribute, NSLayoutAttribute.Height)
+        XCTAssertEqual(heightConstraint.relation, NSLayoutRelation.Equal)
+        XCTAssertEqual(heightConstraint.secondItem as? UIView, rootView)
+        XCTAssertEqual(heightConstraint.secondAttribute, NSLayoutAttribute.Height)
+        XCTAssertEqual(heightConstraint.multiplier, 1)
+        XCTAssertEqual(heightConstraint.constant, 0)
+    }
 }

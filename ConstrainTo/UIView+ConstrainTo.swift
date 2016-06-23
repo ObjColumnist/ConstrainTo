@@ -142,4 +142,21 @@ public extension UIView {
         
         return (xConstraint, yConstraint)
     }
+    
+    /**
+     Constrain to the size of a view
+     
+     - parameters:
+     - view: The `UIView` that you want to constrain to (typically the superview)
+     
+     - returns:
+     (widthConstraint: NSLayoutConstraint, heightConstraint: NSLayoutConstraint): Tuple of the width and height layout constraints that were created
+     */
+    public func constrain(toSizeOf view: UIView) -> (widthConstraint: NSLayoutConstraint, heightConstraint: NSLayoutConstraint) {
+        let widthConstraint = constrain(.Width, to: .Width, of: view)
+        let heightConstraint = constrain(.Height, to: .Height, of: view)
+        
+        return (widthConstraint, heightConstraint)
+    }
+    
 }

@@ -32,11 +32,13 @@ public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = U
 
 public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint)
 
+public func constrain(toSizeOf view: UIView) -> (widthConstraint: NSLayoutConstraint, heightConstraint: NSLayoutConstraint)
+
 ```
 
 ## Examples
 
-## Constrain an attibute to the attribute of another view
+## Constrain an attribute to the attribute of another view
 
 If you wanted the left of `redView` to be to the right of `blueView` you would need to write:
 
@@ -150,4 +152,12 @@ If you want to constrain the center of `redView` to be 10 pts to below the cente
 
 ```swift
 redView.constrain(toCenterOf: blueView, offsetBy: CGPoint(x: 0, y: 10))
+```
+
+### Constrain to another view's size
+
+If you want to constrain the size of `redView` to the size of `blueView` you would need to write:
+
+```swift
+redView.constrain(toSizeOf: blueView)
 ```
