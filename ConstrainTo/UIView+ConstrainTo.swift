@@ -22,13 +22,15 @@ public extension UIView {
          - view: The `UIView` that you want to constrain to
          - multiplier: Multiplier of the constraint defaulting to 1.0
          - offset: Offset of the constraint defaulting to 0.0
+         - priority: constraint priority defaulting to UILayoutPriorityRequired
      
      - returns: 
         NSLayoutConstraint: The layout constraint that was created
      */
-    public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0) -> NSLayoutConstraint {
+    public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: view, attribute: viewAttribute, multiplier: multiplier, constant: offset)
+        constraint.priority = priority
         constraint.active = true
         superview!.addConstraint(constraint)
         return constraint
@@ -41,13 +43,15 @@ public extension UIView {
          - attribute: `NSLayoutAttribute` that you want to constrain
          - relation: `NSLayoutRelation` of the contraint defaulting to .Equal
          - constant: The constant to constrain by
+         - priority: constraint priority defaulting to UILayoutPriorityRequired
      
      - returns:
         NSLayoutConstraint: The layout constraint that was created
      */
-    public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat) -> NSLayoutConstraint {
+    public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .NotAnAttribute, multiplier: 0.0, constant: constant)
+        constraint.priority = priority
         constraint.active = true
         addConstraint(constraint)
         return constraint
