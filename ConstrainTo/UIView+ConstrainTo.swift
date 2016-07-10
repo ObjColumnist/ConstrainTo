@@ -138,7 +138,7 @@ public extension UIView {
          - offsets: `CGPoint` defaulting to CGPoint.zero
      
      - returns:
-        (xConstraint: NSLayoutConstraint, y: NSLayoutConstraint): Tuple of the x and y layout constraints that were created
+        (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint): Tuple of the x and y layout constraints that were created
      */
     public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint) {
         let xConstraint = constrain(.CenterX, to: .CenterX, of: view, offsetBy: offsets.x)
