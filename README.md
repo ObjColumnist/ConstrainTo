@@ -8,15 +8,15 @@
 **ConstrainTo** removes a lot of boiler plate code by automatically:
 
 - Setting `translatesAutoresizingMaskIntoConstraints` to `false` on the view being constrained
-- Activating created constraints by setting `active` to `true`
+- Activating created constraints by setting `isActive` to `true`
 - Returning all constraints that have been created in case you need access to them in the future
 
 **ConstrainTo** has 2 main methods:
 
 ```swift
-public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
 
-public func constrain(attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
 ```
 
 In addition to 6 convenience methods:
@@ -24,11 +24,11 @@ In addition to 6 convenience methods:
 ```swift
 public func constrain(to size: CGSize) -> (width: NSLayoutConstraintConstraint, heightConstraint: NSLayoutConstraint)
 
-public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint)
+public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint)
 
-public func constrain(toEdgesOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topConstraint: NSLayoutConstraint, leadingConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, trailingConstraint: NSLayoutConstraint)
+public func constrain(toEdgesOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topConstraint: NSLayoutConstraint, leadingConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, trailingConstraint: NSLayoutConstraint)
 
-public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsetsZero) -> (topMarginConstraint: NSLayoutConstraint, leadingMarginConstraint: NSLayoutConstraint, bottomMarginConstraint: NSLayoutConstraint, trailingMarginConstraint: NSLayoutConstraint)
+public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topMarginConstraint: NSLayoutConstraint, leadingMarginConstraint: NSLayoutConstraint, bottomMarginConstraint: NSLayoutConstraint, trailingMarginConstraint: NSLayoutConstraint)
 
 public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint)
 
@@ -43,32 +43,32 @@ public func constrain(toSizeOf view: UIView) -> (widthConstraint: NSLayoutConstr
 If you wanted the left of `redView` to be to the right of `blueView` you would need to write:
 
 ```swift
-redView.constrain(.Left, being: .Equal, to: .Right, of: blueView, multipliedBy: 1, offsetBy: 0, priority: UILayoutPriorityRequired)
+redView.constrain(.left, being: .Equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, priority: UILayoutPriorityRequired)
 ```
 
 But because of default parameters you just need to write:
 
 ```swift
-redView.constrain(.Left, to: .Right, of: blueView)
+redView.constrain(.left, to: .right, of: blueView)
 ```
 
 If you wanted the left of `redView` to be 10 pts to the right of `blueView` you would need to write:
 
 ```swift
-redView.constrain(.Left, to: .Right, of: blueView, offsetBy: 10)
+redView.constrain(.left, to: .right, of: blueView, offsetBy: 10)
 ```
 ### Constrain an attribute
 
 If you want to constrain the width of `redView` to 20 pts you would need to write:
 
 ```swift
-redView.constrain(.Width, being: .Equal, to: 20, priority: UILayoutPriorityRequired)
+redView.constrain(.width, being: .equal, to: 20, priority: UILayoutPriorityRequired)
 ```
 
 But because of default parameters you just need to write:
 
 ```swift
-redView.constrain(.Width, to: 20)
+redView.constrain(.width, to: 20)
 ```
 
 ### Constrain size
@@ -84,7 +84,7 @@ redView.constrain(to: CGSize(width: 20, height: 20))
 If you want to constrain the frame (top, left, bottom and right) of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(to: blueView, insetBy: UIEdgeInsetsZero)
+redView.constrain(to: blueView, insetBy: UIEdgeInsets.zero)
 ```
 But because of default parameters you just need to write:
 
@@ -102,7 +102,7 @@ redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom:
 If you want to constrain the edges (top, leading, bottom and trailing) of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsetsZero)
+redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsets.zero)
 ```
 But because of default parameters you just need to write:
 
@@ -121,7 +121,7 @@ redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, 
 If you want to constrain the margins (top margin, leading margin, bottom margin and trailing margin) of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsetsZero)
+redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets.zero)
 ```
 But because of default parameters you just need to write:
 
