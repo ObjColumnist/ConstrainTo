@@ -14,9 +14,9 @@
 **ConstrainTo** has 2 main methods:
 
 ```swift
-public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
 
-public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .Equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
 ```
 
 In addition to 6 convenience methods:
@@ -43,7 +43,7 @@ public func constrain(toSizeOf view: UIView) -> (widthConstraint: NSLayoutConstr
 If you wanted the left of `redView` to be to the right of `blueView` you would need to write:
 
 ```swift
-redView.constrain(.left, being: .Equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, priority: UILayoutPriorityRequired)
+redView.constrain(.left, being: .equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, priority: UILayoutPriorityRequired)
 ```
 
 But because of default parameters you just need to write:
