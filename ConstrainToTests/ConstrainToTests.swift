@@ -10,6 +10,24 @@ import XCTest
 @testable import ConstrainTo
 
 class ConstrainToTests: XCTestCase {
+    
+    func testConstrainToAttributeOfView() {
+        let rootView = UIView(frame: CGRect.zero)
+        let firstView = UIView(frame: CGRect.zero)
+        rootView.addSubview(firstView)
+        
+        let constraint = firstView.constrain(to: .leading, of: rootView)
+        XCTAssertTrue(constraint.isActive)
+        XCTAssertEqual(constraint.firstItem as? UIView, firstView)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.leading)
+        XCTAssertEqual(constraint.relation, NSLayoutRelation.equal)
+        XCTAssertEqual(constraint.secondItem as? UIView, rootView)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.leading)
+        XCTAssertEqual(constraint.multiplier, 1)
+        XCTAssertEqual(constraint.constant, 0)
+        XCTAssertEqual(constraint.priority, UILayoutPriorityRequired)
+    }
+    
     func testConstrainWidth() {
         let width: CGFloat = 25
         

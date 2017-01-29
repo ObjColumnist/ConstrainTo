@@ -8,20 +8,22 @@
 **ConstrainTo** removes a lot of boiler plate code by automatically:
 
 - Setting `translatesAutoresizingMaskIntoConstraints` to `false` on the view being constrained
-- Activating created constraints by setting `isActive` to `true`
+- Automatically activating created constraints by setting `isActive` to `true`
 - Returning all constraints that have been created in case you need access to them in the future
 
 **ConstrainTo** has 2 main methods:
 
 ```swift
-@discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+@discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
 
-@discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+@discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
 ```
 
-In addition to 6 convenience methods:
+In addition to 7 convenience methods:
 
 ```swift
+@discardableResult public func constrain(to attribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0) -> NSLayoutConstraint
+
 @discardableResult public func constrain(to size: CGSize) -> (width: NSLayoutConstraintConstraint, heightConstraint: NSLayoutConstraint)
 
 @discardableResult public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint)
@@ -43,7 +45,7 @@ In addition to 6 convenience methods:
 If you wanted the left of `redView` to be to the right of `blueView` you would need to write:
 
 ```swift
-redView.constrain(.left, being: .equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, priority: UILayoutPriorityRequired)
+redView.constrain(.left, being: .equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, activate: true, priority: UILayoutPriorityRequired)
 ```
 
 But because of default parameters you just need to write:
@@ -62,13 +64,26 @@ redView.constrain(.left, to: .right, of: blueView, offsetBy: 10)
 If you want to constrain the width of `redView` to 20 pts you would need to write:
 
 ```swift
-redView.constrain(.width, being: .equal, to: 20, priority: UILayoutPriorityRequired)
+redView.constrain(.width, being: .equal, to: 20, activate: true, priority: UILayoutPriorityRequired)
 ```
 
 But because of default parameters you just need to write:
 
 ```swift
 redView.constrain(.width, to: 20)
+```
+### Constrain an view to the same attribute of another view
+
+If you want to constrain the width of `redView` to the width of `blueView` you would write:
+
+```swift
+redView.constrain(to: .width, of: blueView, to: 20, multipliedBy: 1, offsetBy: 0)
+```
+
+But because of default parameters you just need to write:
+
+```swift
+redView.constrain(to: .width, of: blueView)
 ```
 
 ### Constrain size

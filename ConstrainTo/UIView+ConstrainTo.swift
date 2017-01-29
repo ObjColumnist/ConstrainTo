@@ -19,14 +19,15 @@ public extension UIView {
     /// - parameter view: The `UIView` that you want to constrain to.
     /// - parameter multiplier: Multiplier of the constraint defaulting to 1.0.
     /// - parameter offset: Offset of the constraint defaulting to 0.0.
+    /// - parameter activate: Whether to activate the constraint defaulting to `true`.
     /// - parameter priority: constraint priority defaulting to `UILayoutPriorityRequired`.
     ///
     /// - returns: The `NSLayoutConstraint` that was created.
-    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: view, attribute: viewAttribute, multiplier: multiplier, constant: offset)
         constraint.priority = priority
-        constraint.isActive = true
+        constraint.isActive = activate
         superview!.addConstraint(constraint)
         return constraint
     }
@@ -36,16 +37,29 @@ public extension UIView {
     /// - parameter attribute: `NSLayoutAttribute` that you want to constrain.
     /// - parameter relation: `NSLayoutRelation` of the contraint defaulting to `.Equal`.
     /// - parameter constant: The constant to constrain by.
+    /// - parameter activate: Whether to activate the constraint defaulting to `true`.
     /// - parameter priority: constraint priority defaulting to `UILayoutPriorityRequired`.
     ///
     /// - returns: The `NSLayoutConstraint` that was created.
-    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: constant)
         constraint.priority = priority
-        constraint.isActive = true
+        constraint.isActive = activate
         addConstraint(constraint)
         return constraint
+    }
+    
+    /// Constrains an attribute to the same attribute of another view.
+    ///
+    /// - parameter attribute: `NSLayoutAttribute` that you want to constrain.
+    /// - parameter view: The `UIView` that you want to constrain to.
+    /// - parameter multiplier: Multiplier of the constraint defaulting to 1.0.
+    /// - parameter offset: Offset of the constraint defaulting to 0.0.
+    ///
+    /// - returns: The `NSLayoutConstraint` that was created.
+    @discardableResult public func constrain(to attribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0) -> NSLayoutConstraint {
+        return constrain(attribute, being: .equal, to: attribute, of: view, multipliedBy: multiplier, offsetBy: offset)
     }
     
     /// Constrains view to a size.
