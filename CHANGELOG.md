@@ -3,7 +3,7 @@
 ### 0.5
 
 - Added `active` parameter to the 2 main constraint methods, so that constraints can be created without automatically be activated.
-- Added Convenience method for constraining to the same attribute of another view.
+- Added convenience method for constraining to the same attribute of another view.
 - Updated documentation style.
 - Added a Changelog
 
