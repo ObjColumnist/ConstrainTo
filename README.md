@@ -77,7 +77,7 @@ redView.constrain(.width, to: 20)
 If you want to constrain the width of `redView` to the width of `blueView` you would write:
 
 ```swift
-redView.constrain(to: .width, of: blueView, to: 20, multipliedBy: 1, offsetBy: 0)
+redView.constrain(to: .width, of: blueView, multipliedBy: 1, offsetBy: 0)
 ```
 
 But because of default parameters you just need to write:
