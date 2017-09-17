@@ -25,7 +25,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.leading)
         XCTAssertEqual(constraint.multiplier, 1)
         XCTAssertEqual(constraint.constant, 0)
-        XCTAssertEqual(constraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(constraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainWidth() {
@@ -45,12 +45,12 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.notAnAttribute)
         XCTAssertEqual(constraint.multiplier, 1)
         XCTAssertEqual(constraint.constant, width)
-        XCTAssertEqual(constraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(constraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainWidthWithHighPriority() {
         let width: CGFloat = 25
-        let priority: Float = UILayoutPriorityDefaultHigh
+        let priority: UILayoutPriority = UILayoutPriority.defaultHigh
         
         let rootView = UIView(frame: CGRect.zero)
         let firstView = UIView(frame: CGRect.zero)
@@ -87,7 +87,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(widthConstraint.secondAttribute, NSLayoutAttribute.notAnAttribute)
         XCTAssertEqual(widthConstraint.multiplier, 1)
         XCTAssertEqual(widthConstraint.constant, width)
-        XCTAssertEqual(widthConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(widthConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(heightConstraint.isActive)
         XCTAssertEqual(heightConstraint.firstItem as? UIView, firstView)
@@ -97,7 +97,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(heightConstraint.secondAttribute, NSLayoutAttribute.notAnAttribute)
         XCTAssertEqual(heightConstraint.multiplier, 1)
         XCTAssertEqual(heightConstraint.constant, height)
-        XCTAssertEqual(heightConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(heightConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToView() {
@@ -115,7 +115,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(topConstraint.secondAttribute, NSLayoutAttribute.top)
         XCTAssertEqual(topConstraint.multiplier, 1)
         XCTAssertEqual(topConstraint.constant, 0)
-        XCTAssertEqual(topConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(topConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(leftConstraint.isActive)
         XCTAssertEqual(leftConstraint.firstItem as? UIView, firstView)
@@ -125,7 +125,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(leftConstraint.secondAttribute, NSLayoutAttribute.left)
         XCTAssertEqual(leftConstraint.multiplier, 1)
         XCTAssertEqual(leftConstraint.constant, 0)
-        XCTAssertEqual(leftConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(leftConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(bottomConstraint.isActive)
         XCTAssertEqual(bottomConstraint.firstItem as? UIView, firstView)
@@ -135,7 +135,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(bottomConstraint.secondAttribute, NSLayoutAttribute.bottom)
         XCTAssertEqual(bottomConstraint.multiplier, 1)
         XCTAssertEqual(bottomConstraint.constant, 0)
-        XCTAssertEqual(bottomConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(bottomConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(rightConstraint.isActive)
         XCTAssertEqual(rightConstraint.firstItem as? UIView, firstView)
@@ -145,7 +145,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(rightConstraint.secondAttribute, NSLayoutAttribute.right)
         XCTAssertEqual(rightConstraint.multiplier, 1)
         XCTAssertEqual(rightConstraint.constant, 0)
-        XCTAssertEqual(rightConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(rightConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToViewWithInsets() {
@@ -170,7 +170,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(topConstraint.secondAttribute, NSLayoutAttribute.top)
         XCTAssertEqual(topConstraint.multiplier, 1)
         XCTAssertEqual(topConstraint.constant, top)
-        XCTAssertEqual(topConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(topConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(leftConstraint.isActive)
         XCTAssertEqual(leftConstraint.firstItem as? UIView, firstView)
@@ -180,7 +180,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(leftConstraint.secondAttribute, NSLayoutAttribute.left)
         XCTAssertEqual(leftConstraint.multiplier, 1)
         XCTAssertEqual(leftConstraint.constant, left)
-        XCTAssertEqual(leftConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(leftConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(bottomConstraint.isActive)
         XCTAssertEqual(bottomConstraint.firstItem as? UIView, firstView)
@@ -190,7 +190,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(bottomConstraint.secondAttribute, NSLayoutAttribute.bottom)
         XCTAssertEqual(bottomConstraint.multiplier, 1)
         XCTAssertEqual(bottomConstraint.constant, -bottom)
-        XCTAssertEqual(bottomConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(bottomConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(rightConstraint.isActive)
         XCTAssertEqual(rightConstraint.firstItem as? UIView, firstView)
@@ -200,7 +200,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(rightConstraint.secondAttribute, NSLayoutAttribute.right)
         XCTAssertEqual(rightConstraint.multiplier, 1)
         XCTAssertEqual(rightConstraint.constant, -right)
-        XCTAssertEqual(rightConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(rightConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToEdgesOfView() {
@@ -218,7 +218,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(topConstraint.secondAttribute, NSLayoutAttribute.top)
         XCTAssertEqual(topConstraint.multiplier, 1)
         XCTAssertEqual(topConstraint.constant, 0)
-        XCTAssertEqual(topConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(topConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(leadingConstraint.isActive)
         XCTAssertEqual(leadingConstraint.firstItem as? UIView, firstView)
@@ -228,7 +228,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(leadingConstraint.secondAttribute, NSLayoutAttribute.leading)
         XCTAssertEqual(leadingConstraint.multiplier, 1)
         XCTAssertEqual(leadingConstraint.constant, 0)
-        XCTAssertEqual(leadingConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(leadingConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(bottomConstraint.isActive)
         XCTAssertEqual(bottomConstraint.firstItem as? UIView, firstView)
@@ -238,7 +238,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(bottomConstraint.secondAttribute, NSLayoutAttribute.bottom)
         XCTAssertEqual(bottomConstraint.multiplier, 1)
         XCTAssertEqual(bottomConstraint.constant, 0)
-        XCTAssertEqual(bottomConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(bottomConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(trailingConstraint.isActive)
         XCTAssertEqual(trailingConstraint.firstItem as? UIView, firstView)
@@ -248,7 +248,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(trailingConstraint.secondAttribute, NSLayoutAttribute.trailing)
         XCTAssertEqual(trailingConstraint.multiplier, 1)
         XCTAssertEqual(trailingConstraint.constant, 0)
-        XCTAssertEqual(trailingConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(trailingConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToEdgesOfViewWithInsets() {
@@ -273,7 +273,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(topConstraint.secondAttribute, NSLayoutAttribute.top)
         XCTAssertEqual(topConstraint.multiplier, 1)
         XCTAssertEqual(topConstraint.constant, top)
-        XCTAssertEqual(topConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(topConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(leadingConstraint.isActive)
         XCTAssertEqual(leadingConstraint.firstItem as? UIView, firstView)
@@ -283,7 +283,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(leadingConstraint.secondAttribute, NSLayoutAttribute.leading)
         XCTAssertEqual(leadingConstraint.multiplier, 1)
         XCTAssertEqual(leadingConstraint.constant, leading)
-        XCTAssertEqual(leadingConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(leadingConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(bottomConstraint.isActive)
         XCTAssertEqual(bottomConstraint.firstItem as? UIView, firstView)
@@ -293,7 +293,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(bottomConstraint.secondAttribute, NSLayoutAttribute.bottom)
         XCTAssertEqual(bottomConstraint.multiplier, 1)
         XCTAssertEqual(bottomConstraint.constant, -bottom)
-        XCTAssertEqual(bottomConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(bottomConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(trailingConstraint.isActive)
         XCTAssertEqual(trailingConstraint.firstItem as? UIView, firstView)
@@ -303,7 +303,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(trailingConstraint.secondAttribute, NSLayoutAttribute.trailing)
         XCTAssertEqual(trailingConstraint.multiplier, 1)
         XCTAssertEqual(trailingConstraint.constant, -trailing)
-        XCTAssertEqual(trailingConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(trailingConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToMarginsOfView() {
@@ -321,7 +321,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(topMarginConstraint.secondAttribute, NSLayoutAttribute.topMargin)
         XCTAssertEqual(topMarginConstraint.multiplier, 1)
         XCTAssertEqual(topMarginConstraint.constant, 0)
-        XCTAssertEqual(topMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(topMarginConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(leadingMarginConstraint.isActive)
         XCTAssertEqual(leadingMarginConstraint.firstItem as? UIView, firstView)
@@ -331,7 +331,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(leadingMarginConstraint.secondAttribute, NSLayoutAttribute.leadingMargin)
         XCTAssertEqual(leadingMarginConstraint.multiplier, 1)
         XCTAssertEqual(leadingMarginConstraint.constant, 0)
-        XCTAssertEqual(leadingMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(leadingMarginConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(bottomMarginConstraint.isActive)
         XCTAssertEqual(bottomMarginConstraint.firstItem as? UIView, firstView)
@@ -341,7 +341,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(bottomMarginConstraint.secondAttribute, NSLayoutAttribute.bottomMargin)
         XCTAssertEqual(bottomMarginConstraint.multiplier, 1)
         XCTAssertEqual(bottomMarginConstraint.constant, 0)
-        XCTAssertEqual(bottomMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(bottomMarginConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(trailingMarginConstraint.isActive)
         XCTAssertEqual(trailingMarginConstraint.firstItem as? UIView, firstView)
@@ -351,7 +351,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(trailingMarginConstraint.secondAttribute, NSLayoutAttribute.trailingMargin)
         XCTAssertEqual(trailingMarginConstraint.multiplier, 1)
         XCTAssertEqual(trailingMarginConstraint.constant, 0)
-        XCTAssertEqual(trailingMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(trailingMarginConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToMarginsOfViewWithInsets() {
@@ -376,7 +376,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(topMarginConstraint.secondAttribute, NSLayoutAttribute.topMargin)
         XCTAssertEqual(topMarginConstraint.multiplier, 1)
         XCTAssertEqual(topMarginConstraint.constant, topMargin)
-        XCTAssertEqual(topMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(topMarginConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(leadingMarginConstraint.isActive)
         XCTAssertEqual(leadingMarginConstraint.firstItem as? UIView, firstView)
@@ -386,7 +386,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(leadingMarginConstraint.secondAttribute, NSLayoutAttribute.leadingMargin)
         XCTAssertEqual(leadingMarginConstraint.multiplier, 1)
         XCTAssertEqual(leadingMarginConstraint.constant, leadingMargin)
-        XCTAssertEqual(leadingMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(leadingMarginConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(bottomMarginConstraint.isActive)
         XCTAssertEqual(bottomMarginConstraint.firstItem as? UIView, firstView)
@@ -396,7 +396,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(bottomMarginConstraint.secondAttribute, NSLayoutAttribute.bottomMargin)
         XCTAssertEqual(bottomMarginConstraint.multiplier, 1)
         XCTAssertEqual(bottomMarginConstraint.constant, -bottomMargin)
-        XCTAssertEqual(bottomMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(bottomMarginConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(trailingMarginConstraint.isActive)
         XCTAssertEqual(trailingMarginConstraint.firstItem as? UIView, firstView)
@@ -406,7 +406,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(trailingMarginConstraint.secondAttribute, NSLayoutAttribute.trailingMargin)
         XCTAssertEqual(trailingMarginConstraint.multiplier, 1)
         XCTAssertEqual(trailingMarginConstraint.constant, -trailingMargin)
-        XCTAssertEqual(trailingMarginConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(trailingMarginConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToCenterOfView() {
@@ -424,7 +424,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(xConstraint.secondAttribute, NSLayoutAttribute.centerX)
         XCTAssertEqual(xConstraint.multiplier, 1)
         XCTAssertEqual(xConstraint.constant, 0)
-        XCTAssertEqual(xConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(xConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(yConstraint.isActive)
         XCTAssertEqual(yConstraint.firstItem as? UIView, firstView)
@@ -434,7 +434,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(yConstraint.secondAttribute, NSLayoutAttribute.centerY)
         XCTAssertEqual(yConstraint.multiplier, 1)
         XCTAssertEqual(yConstraint.constant, 0)
-        XCTAssertEqual(yConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(yConstraint.priority, UILayoutPriority.required)
     }
     
     
@@ -458,7 +458,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(xConstraint.secondAttribute, NSLayoutAttribute.centerX)
         XCTAssertEqual(xConstraint.multiplier, 1)
         XCTAssertEqual(xConstraint.constant, xOffset)
-        XCTAssertEqual(xConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(xConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(yConstraint.isActive)
         XCTAssertEqual(yConstraint.firstItem as? UIView, firstView)
@@ -468,7 +468,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(yConstraint.secondAttribute, NSLayoutAttribute.centerY)
         XCTAssertEqual(yConstraint.multiplier, 1)
         XCTAssertEqual(yConstraint.constant, yOffset)
-        XCTAssertEqual(yConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(yConstraint.priority, UILayoutPriority.required)
     }
     
     func testConstrainToSizeOfView() {
@@ -486,7 +486,7 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(widthConstraint.secondAttribute, NSLayoutAttribute.width)
         XCTAssertEqual(widthConstraint.multiplier, 1)
         XCTAssertEqual(widthConstraint.constant, 0)
-        XCTAssertEqual(widthConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(widthConstraint.priority, UILayoutPriority.required)
         
         XCTAssertTrue(heightConstraint.isActive)
         XCTAssertEqual(heightConstraint.firstItem as? UIView, firstView)
@@ -496,6 +496,6 @@ class ConstrainToTests: XCTestCase {
         XCTAssertEqual(heightConstraint.secondAttribute, NSLayoutAttribute.height)
         XCTAssertEqual(heightConstraint.multiplier, 1)
         XCTAssertEqual(heightConstraint.constant, 0)
-        XCTAssertEqual(heightConstraint.priority, UILayoutPriorityRequired)
+        XCTAssertEqual(heightConstraint.priority, UILayoutPriority.required)
     }
 }

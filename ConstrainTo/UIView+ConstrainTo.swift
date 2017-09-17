@@ -23,7 +23,7 @@ public extension UIView {
     /// - parameter priority: constraint priority defaulting to `UILayoutPriorityRequired`.
     ///
     /// - returns: The `NSLayoutConstraint` that was created.
-    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, activate: Bool = true, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: view, attribute: viewAttribute, multiplier: multiplier, constant: offset)
         constraint.priority = priority
@@ -41,7 +41,7 @@ public extension UIView {
     /// - parameter priority: constraint priority defaulting to `UILayoutPriorityRequired`.
     ///
     /// - returns: The `NSLayoutConstraint` that was created.
-    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    @discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, activate: Bool = true, priority: UILayoutPriority = .required) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = NSLayoutConstraint(item: self, attribute: attribute, relatedBy: relation, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: constant)
         constraint.priority = priority
