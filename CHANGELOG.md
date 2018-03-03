@@ -1,6 +1,10 @@
 # Changelog
 
-### 0.5
+## 0.6
+
+- Migrated to Swift 4.
+
+## 0.5
 
 - Added `active` parameter to the 2 main constrain methods, so that constraints can be created without automatically being activated.
 - Added convenience method for constraining to the same attribute of another view.
