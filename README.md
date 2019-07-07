@@ -14,25 +14,25 @@
 **ConstrainTo** has 2 main methods:
 
 ```swift
-@discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to viewAttribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+@discardableResult func constrain(_ attribute: NSLayoutConstraint.Attribute, being relation: NSLayoutConstraint.Relation = .equal, to viewAttribute: NSLayoutConstraint.Attribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0, activate: Bool = true, priority: UILayoutPriority = .required) -> NSLayoutConstraint
 
-@discardableResult public func constrain(_ attribute: NSLayoutAttribute, being relation: NSLayoutRelation = .equal, to constant: CGFloat, activate: Bool = true, priority: Float = UILayoutPriorityRequired) -> NSLayoutConstraint
+@discardableResult func constrain(_ attribute: NSLayoutConstraint.Attribute, being relation: NSLayoutConstraint.Relation = .equal, to constant: CGFloat, activate: Bool = true, priority: UILayoutPriority = .required) -> NSLayoutConstraint
 ```
 
 In addition to 7 convenience methods:
 
 ```swift
-@discardableResult public func constrain(to attribute: NSLayoutAttribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0) -> NSLayoutConstraint
+@discardableResult public func constrain(to attribute: NSLayoutConstraint.Attribute, of view: UIView, multipliedBy multiplier: CGFloat = 1.0, offsetBy offset: CGFloat = 0.0) -> NSLayoutConstraint
 
-@discardableResult public func constrain(to size: CGSize) -> (width: NSLayoutConstraintConstraint, heightConstraint: NSLayoutConstraint)
+@discardableResult public func constrain(to size: CGSize) -> (width: NSLayoutConstraint, heightConstraint: NSLayoutConstraint)
 
-@discardableResult public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint)
+@discardableResult public func constrain(to view: UIView, insetBy insets: UIEdgeInsets = .zero) -> (topConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint)
 
-@discardableResult public func constrain(toEdgesOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topConstraint: NSLayoutConstraint, leadingConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, trailingConstraint: NSLayoutConstraint)
+@discardableResult public func constrain(toEdgesOf view: UIView, insetBy insets: UIEdgeInsets = .zero) -> (topConstraint: NSLayoutConstraint, leadingConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, trailingConstraint: NSLayoutConstraint)
 
-@discardableResult public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = UIEdgeInsets.zero) -> (topMarginConstraint: NSLayoutConstraint, leadingMarginConstraint: NSLayoutConstraint, bottomMarginConstraint: NSLayoutConstraint, trailingMarginConstraint: NSLayoutConstraint)
+@discardableResult public func constrain(toMarginsOf view: UIView, insetBy insets: UIEdgeInsets = .zero) -> (topMarginConstraint: NSLayoutConstraint, leadingMarginConstraint: NSLayoutConstraint, bottomMarginConstraint: NSLayoutConstraint, trailingMarginConstraint: NSLayoutConstraint)
 
-@discardableResult public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = CGPoint.zero) -> (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint)
+@discardableResult public func constrain(toCenterOf view: UIView, offsetBy offsets: CGPoint = .zero) -> (xConstraint: NSLayoutConstraint, yConstraint: NSLayoutConstraint)
 
 @discardableResult public func constrain(toSizeOf view: UIView) -> (widthConstraint: NSLayoutConstraint, heightConstraint: NSLayoutConstraint)
 
@@ -45,7 +45,7 @@ In addition to 7 convenience methods:
 If you wanted the left of `redView` to be to the right of `blueView` you would need to write:
 
 ```swift
-redView.constrain(.left, being: .equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, activate: true, priority: UILayoutPriorityRequired)
+redView.constrain(.left, being: .equal, to: .right, of: blueView, multipliedBy: 1, offsetBy: 0, activate: true, priority: .required)
 ```
 
 But because of default parameters you just need to write:
@@ -64,7 +64,7 @@ redView.constrain(.left, to: .right, of: blueView, offsetBy: 10)
 If you want to constrain the width of `redView` to 20 pts you would need to write:
 
 ```swift
-redView.constrain(.width, being: .equal, to: 20, activate: true, priority: UILayoutPriorityRequired)
+redView.constrain(.width, being: .equal, to: 20, activate: true, priority: .required)
 ```
 
 But because of default parameters you just need to write:
@@ -117,7 +117,7 @@ redView.constrain(to: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, bottom:
 If you want to constrain the edges (top, leading, bottom and trailing) of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsets.zero)
+redView.constrain(toEdgesOf: blueView, insetBy: .zero)
 ```
 But because of default parameters you just need to write:
 
@@ -136,7 +136,7 @@ redView.constrain(toEdgesOf: blueView, insetBy: UIEdgeInsets(top: 10, left: 10, 
 If you want to constrain the margins (top margin, leading margin, bottom margin and trailing margin) of `redView` to that of `blueView` you would need to write:
 
 ```swift
-redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets.zero)
+redView.constrain(toMarginsOf: blueView, insetBy: .zero)
 ```
 But because of default parameters you just need to write:
 
@@ -154,7 +154,7 @@ redView.constrain(toMarginsOf: blueView, insetBy: UIEdgeInsets(top: 10, left: 10
 If you want to constrain `redView` to be centered in `blueView` you would need to write:
 
 ```swift
-redView.constrain(toCenterOf: blueView, offsetBy: CGPoint.zero)
+redView.constrain(toCenterOf: blueView, offsetBy: .zero)
 ```
 
 But because of default parameters you just need to write:
